@@ -8,36 +8,36 @@ class Client2 {
 
   public static void main(String args[]) throws Exception {
     // Create client socket
-    Socket s = new Socket("localhost", 6969);
+    Socket socket = new Socket("localhost", 6969);
 
     // to send data to the server
-    DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+    OutputStream outputstream = socket.getOutputStream();
+    DataOutputStream dataoutputstream = new DataOutputStream(outputstream);
 
     // to read data coming from the server
-    BufferedReader br = new BufferedReader(
-      new InputStreamReader(s.getInputStream())
-    );
+    InputStream inputstream = socket.getInputStream();
+    BufferedReader bufferedreaderinputstream = new BufferedReader(new InputStreamReader(inputstream));
 
     // to read data from the keyboard
-    BufferedReader kb = new BufferedReader(new InputStreamReader(System.in));
-    String str, str1;
+    BufferedReader bufferedreaderkeyboard = new BufferedReader(new InputStreamReader(System.in));
+    String strtoserver, strfromserver;
 
     // repeat as long as exit
     // is not typed at client
-    while (!(str = kb.readLine()).equals("exit")) {
+    while (!(strtoserver = bufferedreaderkeyboard.readLine()).equals("exit")) {
       // send to the server
-      dos.writeBytes(str + "\n");
+      dataoutputstream.writeBytes(strtoserver + "\n");
 
       // receive from the server
-      str1 = br.readLine();
+      strfromserver = bufferedreaderinputstream.readLine();
 
-      System.out.println(str1);
+      System.out.println(strfromserver);
     }
 
     // close connection.
-    dos.close();
-    br.close();
-    kb.close();
-    s.close();
+    dataoutputstream.close();
+    bufferedreaderinputstream.close();
+    bufferedreaderkeyboard.close();
+    socket.close();
   }
 }

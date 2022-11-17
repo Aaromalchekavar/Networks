@@ -5,17 +5,18 @@ public class SimpleServer {
 
   public static void main(String args[]) throws IOException {
     //  Register service on port 1254
-    ServerSocket s = new ServerSocket(1254);
-    Socket s1 = s.accept();
+    ServerSocket serversocket = new ServerSocket(1254);
+    Socket socket = serversocket.accept();
     // Wait and accept a connection
     // Get a communication stream associated with the socket
-    OutputStream s1out = s1.getOutputStream();
-    DataOutputStream dos = new DataOutputStream(s1out);
+    OutputStream outputstream = socket.getOutputStream();
+    DataOutputStream dataoutputstream = new DataOutputStream(outputstream);
     // Send a string!
-    dos.writeUTF("Hi there");
+    dataoutputstream.writeUTF("Hi there");
     // Close the connection, but not the server socket
-    dos.close();
-    s1out.close();
-    s1.close();
+    dataoutputstream.close();
+    outputstream.close();
+    socket.close();
   }
 }
+
