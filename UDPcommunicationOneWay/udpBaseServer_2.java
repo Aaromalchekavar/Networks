@@ -10,16 +10,16 @@ public class udpBaseServer_2 {
 
   public static void main(String[] args) throws IOException {
     // Step 1 : Create a socket to listen at port 1234
-    DatagramSocket ds = new DatagramSocket(1234);
+    DatagramSocket datagramsocket = new DatagramSocket(1234);
     byte[] receive = new byte[65535];
 
-    DatagramPacket DpReceive = null;
+    DatagramPacket datagrampacket = null;
     while (true) {
       // Step 2 : create a DatgramPacket to receive the data.
-      DpReceive = new DatagramPacket(receive, receive.length);
+      datagrampacket = new DatagramPacket(receive, receive.length);
 
       // Step 3 : revieve the data in byte buffer.
-      ds.receive(DpReceive);
+      datagramsocket.receive(datagrampacket);
 
       System.out.println("Client:-" + data(receive));
 
