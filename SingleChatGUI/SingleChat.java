@@ -1,16 +1,7 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.WindowConstants;
+import java.awt.event.*;
+import java.io.*;
+import java.net.*;
+import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 
 public class SingleChat extends javax.swing.JFrame {

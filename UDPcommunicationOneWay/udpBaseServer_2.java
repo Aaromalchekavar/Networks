@@ -1,10 +1,8 @@
 // Java program to illustrate Server side
 // Implementation using DatagramSocket
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.SocketException;
+import java.net.*;
+
 
 public class udpBaseServer_2 {
 
