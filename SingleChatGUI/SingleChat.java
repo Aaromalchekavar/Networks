@@ -120,7 +120,6 @@ public class SingleChat extends javax.swing.JFrame {
         try {
           wait(3000);
         } catch (InterruptedException ex1) {}
-        System.exit(0);
       }
     }
   };
