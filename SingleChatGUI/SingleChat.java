@@ -2,7 +2,7 @@ import java.awt.event.*;
 import java.io.*;
 import java.net.*;
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
+
 
 public class SingleChat extends javax.swing.JFrame {
 
@@ -35,7 +35,6 @@ public class SingleChat extends javax.swing.JFrame {
     sendbutton.setSize(60, 30);
     add(textareaormessages);
     textareaormessages.setEditable(false);
-    textareaormessages.setBorder(new EtchedBorder());
     textareaormessages.setLocation(5, textfield.getHeight() + textfield.getY() + 5);
     textareaormessages.setSize(
       getWidth() - 30,

@@ -3,6 +3,7 @@ import java.util.*;
 class Hamming {
 
   public static void main(String args[]) {
+//just bits ellam edukkunn
     Scanner scan = new Scanner(System.in);
     System.out.println("Enter the number of bits for the Hamming data:");
     int n = scan.nextInt();
@@ -18,7 +19,7 @@ class Hamming {
       System.out.print(a[n - i - 1]);
     }
     System.out.println();
-
+//bits ellam eduth a[] lek save cheyth
     int b[] = generateCode(a);
 
     System.out.println("Generated code is:");
