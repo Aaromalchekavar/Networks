@@ -9,22 +9,8 @@ public static void main(String args[]) throws IOException{
     while(true){
         DatagramPacket packet =  new DatagramPacket(buffer,buffer.length);
         s.receive(packet);
-        System.out.println(data(buffer));
-        if (data(buffer).toString().equals("bye")) {
-            buffer = new byte[65535];
-        break;
+        String data = new String(packet.getData(),0,packet.getLength());
+        System.out.println(data);
         }
       } 
-}
-
- public static StringBuilder data(byte[] buffer) {
-    if (buffer == null) return null;
-    StringBuilder ret = new StringBuilder();
-    int i = 0;
-    while (buffer[i] != 0) {
-      ret.append((char) buffer[i]);
-      i++;
-    }
-    return ret;
-  }
 }
