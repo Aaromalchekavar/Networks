@@ -3,8 +3,9 @@ import java.net.*;
 class server{
 public static void main(String args[]) throws IOException 
 {
-	ServerSocket ss = new ServerSocket(3504);
+	ServerSocket ss = new ServerSocket(3600);
 	Socket s = ss.accept();
+	System.out.println("Connection Established");
 	PrintStream ps = new PrintStream(s.getOutputStream());
 	BufferedReader bis = new BufferedReader(new InputStreamReader(s.getInputStream()));
 	BufferedReader bk = new BufferedReader(new InputStreamReader(System.in));
