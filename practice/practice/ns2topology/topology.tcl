@@ -1,0 +1,40 @@
+set ns [new Simulator]
+set nf [open trace.tr w]
+$ns trace-all $nf
+set nr [open namtrace.nam w]
+$ns namtrace-all $nr
+proc finish {} {
+    global ns nf nr
+    $ns flush-trace
+    close $nf
+    close $nr
+    exec namtrace.nam
+    exit 0
+}
+set n0 [$ns node]
+set n1 [$ns node]
+set n2 [$ns node]
+set n3 [$ns node]
+$ns duplex-link $n0 $n2 2Mb 10ms DropTail
+$ns duplex-link $n3 $n2 3Mb 10ms DropTail
+$ns duplex-link $n1 $n2 1Mb 10ms DropTail
+set tcp0 [new Agent/TCP]
+$ns attach-agent $n0 $tcp0
+set ftp0 [new Application/FTP]
+$ftp0 attach-agent $tcp0
+set tcp1 [new Agent/TCP]
+$ns attach-agent $n1 $tcp1
+set ftp1 [new Application/FTP]
+$ftp1 attach-agent $tcpsink1
+set tcpsink0 [new Agent/TCPSink]
+$ns attach-agent $ns3 $tcpsink0
+set tcpsink1 [new Agent/TCPSink]
+$ns attach-agent $ns3 $tcpsink1
+$ns connect $tcp0 $tcpsink0
+$ns connect $tcp1 $tcpsink1
+$ns at 1.0 "$ftp0 start"
+$ns at 1.1 "$ftp1 start"
+$ns at 10.0 "$ftp0 stop"
+$ns at 10.1 "$ftp1 stop"
+$ns at 10.2 "finish"
+$ns run
